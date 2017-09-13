@@ -1,6 +1,6 @@
 {
   "name": "@nrfcloud/models",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Contains model definitions for the REST API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -9,11 +9,12 @@
     "test:coverage": "jest --coverage",
     "lint": "tslint --project ./tsconfig.json",
     "precommit": "npm run lint && npm test",
-    "commitmsg": "commitlint"
+    "commitmsg": "commitlint",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nRFCloud/models.git"
+    "url": "https://github.com/nRFCloud/models.git"
   },
   "keywords": [
     "nRFCloud",
@@ -39,7 +40,8 @@
     "json-schema-to-typescript": "^4.6.0",
     "ts-jest": "^20.0.10",
     "tslint": "^5.6.0",
-    "typescript": "^2.4.2"
+    "typescript": "^2.4.2",
+    "semantic-release": "^7.0.2"
   },
   "jest": {
     "moduleFileExtensions": [
