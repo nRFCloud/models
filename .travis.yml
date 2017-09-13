@@ -16,6 +16,7 @@ script:
   - npm run lint
   - npm run test:coverage
 after_success:
+  - make dist
   - npm run semantic-release
 branches:
   except:

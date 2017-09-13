@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "make test-prepare && jest",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "make test-prepare && jest --coverage",
     "lint": "tslint --project ./tsconfig.json",
     "precommit": "npm run lint && npm test",
     "commitmsg": "commitlint -e",
