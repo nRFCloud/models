@@ -1,5 +1,7 @@
 # Models
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nRFCloud/models.svg)](https://greenkeeper.io/)
+
 Contains model definitions for the REST API.
 
 ## Testing
