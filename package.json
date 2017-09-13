@@ -9,7 +9,7 @@
     "test:coverage": "jest --coverage",
     "lint": "tslint --project ./tsconfig.json",
     "precommit": "npm run lint && npm test",
-    "commitmsg": "commitlint",
+    "commitmsg": "commitlint -e",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
