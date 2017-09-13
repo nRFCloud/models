@@ -1,0 +1,26 @@
+{
+    "title": "APIIndexSchema",
+    "type": "object",
+    "description": "Describes entry points of an API.",
+    "allOf": [
+        {
+            "$ref": "./VersionedContext.schema.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "links": {
+                    "type": "array",
+                    "description": "Links to entry points",
+                    "items": {
+                        "$ref": "./Link.schema.json"
+                    }
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "links"
+            ]
+        }
+    ]
+}

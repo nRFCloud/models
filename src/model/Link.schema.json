@@ -1,0 +1,33 @@
+{
+    "title": "LinkSchema",
+    "type": "object",
+    "description": "Describes a link.",
+    "allOf": [
+        {
+            "$ref": "./VersionedContext.schema.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "URL to retrieve the link"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Context of the linked item"
+                },
+                "rel": {
+                    "type": "string",
+                    "description": "Label of the relation"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "href",
+                "subject",
+                "rel"
+            ]
+        }
+    ]
+}

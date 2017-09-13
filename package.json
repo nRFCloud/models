@@ -1,0 +1,64 @@
+{
+  "name": "@nrfcloud/models",
+  "version": "1.0.0",
+  "description": "Contains model definitions for the REST API",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "make test-prepare && jest",
+    "test:coverage": "jest --coverage",
+    "lint": "tslint --project ./tsconfig.json",
+    "precommit": "npm run lint && npm test",
+    "commitmsg": "commitlint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nRFCloud/models.git"
+  },
+  "keywords": [
+    "nRFCloud",
+    "IoT",
+    "NordicSemiconductor"
+  ],
+  "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/nRFCloud/models/issues"
+  },
+  "homepage": "https://github.com/NordicSemiconductor/nrfcloud-models#readme",
+  "dependencies": {
+    "tcomb": "^3.2.22"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^3.2.0",
+    "@commitlint/config-angular": "^3.1.1",
+    "@types/jest": "^20.0.7",
+    "@types/node": "^8.0.28",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "json-schema-to-typescript": "^4.6.0",
+    "ts-jest": "^20.0.10",
+    "tslint": "^5.6.0",
+    "typescript": "^2.4.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "coverageReporters": [
+      "html"
+    ],
+    "mapCoverage": true
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+    "title": "VersionedContextSchema",
+    "type": "object",
+    "description": "All entities require a 'context' which explicitly types their JSON representation. The version is used to express schema changes per entity.",
+    "properties": {
+        "__context": {
+            "type": "string",
+            "description": "context for this model: e.g. 'https://github.com/nRFCloud/models#CustomCard'"
+        },
+        "__contextVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "version of the $context: e.g. 1"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "__context",
+        "__contextVersion"
+    ]
+}
