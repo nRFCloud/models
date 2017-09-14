@@ -7,6 +7,8 @@ build/client.js: assets/test/client.ts dist node_modules/iris-web-api/index.bund
 dist/generated: src/model/*.schema.json
 	@mkdir -p $@
 	node scripts/generate-base-models-from-schema.js src/model $@
+	mkdir -p dist/model
+	cp src/model/*.schema.json dist/model
 
 dist: src/*.ts dist/generated
 	@mkdir -p $@

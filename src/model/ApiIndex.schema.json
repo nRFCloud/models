@@ -1,14 +1,17 @@
 {
-    "title": "APIIndexSchema",
-    "type": "object",
-    "description": "Describes entry points of an API.",
     "allOf": [
         {
             "$ref": "./VersionedContext.schema.json"
         },
         {
+            "title": "ApiIndexSchema",
+            "description": "Describes entry points of an API.",
             "type": "object",
             "properties": {
+                "__context": {
+                    "example": "https://github.com/nRFCloud/models#ApiIndex",
+                    "type": "string"
+                },
                 "links": {
                     "type": "array",
                     "description": "Links to entry points",
@@ -19,6 +22,7 @@
             },
             "additionalProperties": false,
             "required": [
+                "__context",
                 "links"
             ]
         }

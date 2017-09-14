@@ -13,6 +13,14 @@ fs.readdir(srcDir, (err, files) => {
     files.filter(f => /\.schema\.json$/.test(f)).forEach(file => {
         fs.readFile(path.join(srcDir, file), 'utf-8', (err, data) => {
             const d = JSON.parse(data);
+            if (d.allOf) {
+                d.type = d.allOf[1].type;
+                d.title = d.allOf[1].title;
+                d.description = d.allOf[1].description;
+                delete d.allOf[1].title;
+                delete d.allOf[1].type;
+                delete d.allOf[1].description;
+            }
             const {title} = d;
             return js2ts.compile(d, title, {cwd: srcDir})
                 .then(ts => {

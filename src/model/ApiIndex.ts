@@ -2,7 +2,7 @@ import {JSONSerializeable} from './JSONSerializeable';
 import {VersionedContext} from './VersionedContext';
 import {URLValue} from '../value/URLValue';
 import {Link} from './Link';
-import {ApiIndexSchema} from '../../dist/generated/APIIndexSchema';
+import {ApiIndexSchema} from '../../dist/generated/ApiIndexSchema';
 
 /**
  * Describes entry points of an API
