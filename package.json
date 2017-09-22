@@ -33,7 +33,7 @@
   "devDependencies": {
     "@commitlint/cli": "^3.2.0",
     "@commitlint/config-angular": "^3.1.1",
-    "@types/jest": "^20.0.7",
+    "@types/jest": "^21.1.0",
     "@types/node": "^8.0.28",
     "husky": "^0.14.3",
     "jest": "^21.0.2",
