@@ -70,3 +70,20 @@ Describes a link.
 
 JSON Schema: [Link.schema.json](./src/models/Link.schema.json)  
 Source: [Link.ts](./src/models/Link.ts)
+
+### Status
+
+Describes the status of the system.
+
+```json
+{
+    "__context": "https://github.com/nRFCloud/models#Link",
+    "__contextVersion": 1,
+    "maintenance": false,
+    "version": "1.0.0-beta.1",
+    "time: "2017-10-02T11:05:46.793Z"
+}
+```
+
+JSON Schema: [Link.schema.json](./src/models/Status.schema.json)  
+Source: [Link.ts](./src/models/Status.ts)
