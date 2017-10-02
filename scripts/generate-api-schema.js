@@ -11,7 +11,18 @@ const outDir = process.argv[process.argv.length - 1];
 fs.readdir(srcDir, (err, files) => {
     files.filter(f => /\.schema\.json$/.test(f)).forEach(file => {
         fs.readFile(path.join(srcDir, file), 'utf-8', (err, data) => {
-            fs.writeFile(path.join(outDir, file), data.replace(/\"\$ref\": \"[^"]+\/([^\.]+)\.schema\.json\"/g, '"$ref": "#/definitions/$1Schema"'), err => {
+            data = data.replace(/\"\$ref\": \"[^"]+\/([^\.]+)\.schema\.json\"/g, '"$ref": "#/definitions/$1Schema"');
+            let schema = JSON.parse(data);
+            if (schema.allOf) {
+                // Copy title, description, type to resulting schema
+                schema = schema.allOf.reduce((schema, {title, description, type}) => ({
+                    ...schema,
+                    title,
+                    description,
+                    type
+                }), schema);
+            }
+            fs.writeFile(path.join(outDir, file), JSON.stringify(schema, '', 2), err => {
                 if (err) {
                     console.error(err);
                     process.exit(1);
