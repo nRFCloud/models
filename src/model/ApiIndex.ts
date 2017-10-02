@@ -26,7 +26,7 @@ export class ApiIndex extends VersionedContext implements JSONSerializeable {
         this.links = links;
     }
 
-    static fromJSON({__context, __contextVersion, links: links}: ApiIndexSchema): ApiIndex {
+    static fromJSON({__context, __contextVersion, links}: ApiIndexSchema): ApiIndex {
         VersionedContext.checkContextVersion(ApiIndex, {
             $context: URLValue.fromString(__context, ['List.fromJSON()', '$context:URLValue']),
             $contextVersion: __contextVersion
