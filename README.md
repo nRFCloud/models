@@ -51,8 +51,8 @@ Describes entry points of an API.
 }
 ```
 
-JSON Schema: [ApiIndex.schema.json](./src/models/ApiIndex.schema.json)  
-Source: [ApiIndex.ts](./src/models/Link.ts)
+JSON Schema: [ApiIndex.schema.json](./src/model/ApiIndex.schema.json)  
+Source: [ApiIndex.ts](./src/model/Link.ts)
 
 ### Link
 
@@ -68,8 +68,8 @@ Describes a link.
 }
 ```
 
-JSON Schema: [Link.schema.json](./src/models/Link.schema.json)  
-Source: [Link.ts](./src/models/Link.ts)
+JSON Schema: [Link.schema.json](./src/model/Link.schema.json)  
+Source: [Link.ts](./src/model/Link.ts)
 
 ### Status
 
@@ -77,7 +77,7 @@ Describes the status of the system.
 
 ```json
 {
-    "__context": "https://github.com/nRFCloud/models#Link",
+    "__context": "https://github.com/nRFCloud/models#Status",
     "__contextVersion": 1,
     "maintenance": false,
     "version": "1.0.0-beta.1",
@@ -85,5 +85,5 @@ Describes the status of the system.
 }
 ```
 
-JSON Schema: [Link.schema.json](./src/models/Status.schema.json)  
-Source: [Link.ts](./src/models/Status.ts)
+JSON Schema: [Status.schema.json](./src/model/Status.schema.json)  
+Source: [Status.ts](./src/model/Status.ts)
