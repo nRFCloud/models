@@ -1,0 +1,45 @@
+{
+    "allOf": [
+        {
+            "$ref": "./VersionedContext.schema.json"
+        },
+        {
+            "title": "StatusSchema",
+            "description": "Describes the status of the system.",
+            "type": "object",
+            "properties": {
+                "__context": {
+                    "example": "https://github.com/nRFCloud/models#Status",
+                    "type": "string"
+                },
+                "__contextVersion": {
+                    "example": 1,
+                    "type": "number"
+                },
+                "maintenance": {
+                    "description": "Whether the system is in maintenance mode.",
+                    "example": false,
+                    "type": "boolean"
+                },
+                "version": {
+                    "description": "The global version of the system. This is merely a logical version identifier for the system as whole since individual services may have their own version scheme. This is a semantic version string: http://semver.org/",
+                    "example": "1.0.0-beta.2",
+                    "type": "string"
+                },
+                "time": {
+                    "description": "Time of the status creation.",
+                    "example": "2017-10-02T11:05:46.793Z",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "__context",
+                "__contextVersion",
+                "maintenance",
+                "version",
+                "time"
+            ]
+        }
+    ]
+}
