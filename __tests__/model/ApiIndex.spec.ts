@@ -22,8 +22,7 @@ describe('ApiIndex', () => {
 
     describe('JSON', () => {
         it('should parse it\'s JSON representation', () => {
-            const link = Link.fromJSON(JSON.parse(JSON.stringify(new Link(new URLValue('http://example.com/some-item/42'), new URLValue('http://example.com/jsonld/some')))));
-            const index = new ApiIndex([link]);
+            const index = ApiIndex.fromJSON(JSON.parse(JSON.stringify(new ApiIndex([new Link(new URLValue('http://example.com/some-item/42'), new URLValue('http://example.com/jsonld/some'))]))));
             validateIndex(index);
         });
     });
