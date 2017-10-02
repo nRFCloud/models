@@ -12,6 +12,10 @@
                     "example": "https://github.com/nRFCloud/models#ApiIndex",
                     "type": "string"
                 },
+                "__contextVersion": {
+                    "example": 1,
+                    "type": "number"
+                },
                 "links": {
                     "type": "array",
                     "description": "Links to entry points",
@@ -23,6 +27,7 @@
             "additionalProperties": false,
             "required": [
                 "__context",
+                "__contextVersion",
                 "links"
             ]
         }

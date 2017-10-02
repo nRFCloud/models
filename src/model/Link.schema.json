@@ -12,6 +12,10 @@
                     "example": "https://github.com/nRFCloud/models#Link",
                     "type": "string"
                 },
+                "__contextVersion": {
+                    "example": 1,
+                    "type": "number"
+                },
                 "href": {
                     "description": "URL to retrieve the link",
                     "example": "https://meta.nrfcloud.com/",
@@ -33,6 +37,7 @@
             "additionalProperties": false,
             "required": [
                 "__context",
+                "__contextVersion",
                 "href",
                 "subject",
                 "rel"
