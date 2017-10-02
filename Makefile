@@ -10,9 +10,13 @@ dist/generated: src/model/*.schema.json
 	mkdir -p dist/model
 	cp src/model/*.schema.json dist/model
 
-dist: src/*.ts dist/generated
+dist: src/*.ts dist/generated dist/api-schema
 	@mkdir -p $@
 	./node_modules/.bin/tsc
+
+dist/api-schema: src/model/*.schema.json
+	@mkdir -p $@
+	node scripts/generate-api-schema.js src/model/ $@
 
 test-prepare: dist
 
