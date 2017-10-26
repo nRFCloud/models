@@ -3,3 +3,8 @@ export * from './model/Link';
 export * from './model/VersionedContext';
 export * from './model/ApiIndex';
 export * from './model/Status';
+export * from './model/HttpProblem';
+export * from './error/BadRequestError';
+export * from './error/AccessDeniedError';
+export * from './error/EntityNotFoundError';
+export * from './error/ApplicationError';
