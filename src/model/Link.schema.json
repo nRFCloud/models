@@ -18,7 +18,8 @@
                     "description": "version of the context",
                     "example": 1,
                     "type": "integer",
-                    "minimum": 1
+                    "minimum": 1,
+                    "format": "int32"
                 },
                 "href": {
                     "description": "URL to retrieve the link",
