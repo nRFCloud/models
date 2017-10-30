@@ -61,6 +61,7 @@
   },
   "files": [
     "dist",
+    "scripts",
     "README.md"
   ],
   "publishConfig": {
