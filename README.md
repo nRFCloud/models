@@ -87,3 +87,39 @@ Describes the status of the system.
 
 JSON Schema: [Status.schema.json](./src/model/Status.schema.json)  
 Source: [Status.ts](./src/model/Status.ts)
+
+### Errors
+
+#### HttpProblem
+
+All error responses are expressed using this message format. See <https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/>.
+
+```json
+{
+	"__context" : "https://www.ietf.org/id/draft-ietf-appsawg-http-problem-01.txt",
+	"__contextVersion" : 1,
+	"type" : "https://github.com/nRFCloud/models#EntityNotFoundError",
+	"title" : "Entity not found",
+	"status" : 404,
+	"detail" : "EntityNotFoundError: Custom card \"foo\" does not exist!"
+}
+```
+
+JSON Schema: [HttpProblem.schema.json](./src/HttpProblem.schema.json)  
+Source: [HttpProblem.ts](./src/HttpProblem.ts)
+
+#### AccessDeniedError
+
+Thrown if the access to a resource was denied.
+
+#### BadRequestError
+
+Thrown if the request was malformed.
+
+#### EntityNotFoundError
+
+Thrown if a requested resource could not be found.
+
+#### InternalError
+
+Thrown if an unexpected internal error happened.
