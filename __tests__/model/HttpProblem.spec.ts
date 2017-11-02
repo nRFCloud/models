@@ -37,4 +37,11 @@ describe('HttpProblem', function () {
             validateProblem(problem);
         });
     });
+
+    describe('instanceof', () => {
+        it('should be comparable', () => {
+            expect(new HttpProblem(new URLValue('http://example.com'), 'title', 123, 'detail')).toBeInstanceOf(HttpProblem);
+            expect(new HttpProblem(new URLValue('http://example.com'), 'title', 123, 'detail')).toBeInstanceOf(Error);
+        });
+    });
 });
