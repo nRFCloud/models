@@ -1,4 +1,4 @@
-import {URLValue} from '../../src/value/URLValue';
+import {URLValue} from '../..';
 
 // Test data from https://mathiasbynens.be/demo/url-regex
 

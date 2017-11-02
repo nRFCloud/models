@@ -1,6 +1,4 @@
-import {Link} from '../../src/model/Link';
-import {URLValue} from '../../src/value/URLValue';
-import {ApiIndex} from '../../src/model/ApiIndex';
+import { Link, URLValue, ApiIndex } from '../..';
 
 const validateIndex = index => {
     expect(index.$context.equals(ApiIndex.$context)).toEqual(true);

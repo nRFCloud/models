@@ -1,6 +1,4 @@
-import {Link} from '../../src/model/Link';
-import {URLValue} from '../../src/value/URLValue';
-import {Status} from '../../src/model/Status';
+import {Status} from '../..';
 
 const validateStatus = status => {
     expect(status.$context.equals(Status.$context)).toEqual(true);

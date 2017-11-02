@@ -1,5 +1,4 @@
-import {Link} from '../../src/model/Link';
-import {URLValue} from '../../src/value/URLValue';
+import { URLValue, Link } from '../..';
 
 const validateLink = link => {
     expect(link.href.equals(new URLValue('http://example.com/some-item/42'))).toEqual(true);

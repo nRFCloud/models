@@ -1,5 +1,4 @@
-import {HttpProblem} from '../../src/model/HttpProblem';
-import {URLValue} from '../../src/value/URLValue';
+import { URLValue, HttpProblem } from '../..';
 
 function validateProblem(problem: HttpProblem) {
     expect(problem.type.equals(new URLValue('http://example.com'))).toEqual(true);
