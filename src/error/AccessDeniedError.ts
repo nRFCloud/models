@@ -3,5 +3,6 @@ export class AccessDeniedError extends Error {
         super(...params);
         this.name = AccessDeniedError.name;
         Error.captureStackTrace(this, AccessDeniedError);
+        Object.setPrototypeOf(this, AccessDeniedError.prototype);
     }
 }

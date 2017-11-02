@@ -3,5 +3,6 @@ export class EntityNotFoundError extends Error {
         super(...params);
         this.name = EntityNotFoundError.name;
         Error.captureStackTrace(this, EntityNotFoundError);
+        Object.setPrototypeOf(this, EntityNotFoundError.prototype);
     }
 }

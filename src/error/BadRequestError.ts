@@ -3,5 +3,6 @@ export class BadRequestError extends Error {
         super(...params);
         this.name = BadRequestError.name;
         Error.captureStackTrace(this, BadRequestError);
+        Object.setPrototypeOf(this, BadRequestError.prototype);
     }
 }

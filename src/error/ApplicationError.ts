@@ -3,5 +3,6 @@ export class ApplicationError extends Error {
         super(...params);
         this.name = ApplicationError.name;
         Error.captureStackTrace(this, ApplicationError);
+        Object.setPrototypeOf(this, ApplicationError.prototype);
     }
 }
