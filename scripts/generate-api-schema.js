@@ -41,7 +41,7 @@ fs.readdir(srcDir, (err, files) => {
                 });
             }
 
-            fs.writeFile(path.join(outDir, file), JSON.stringify(schema, '', 2), err => {
+            fs.writeFile(path.join(outDir, file), JSON.stringify(schema, null, 2), err => {
                 if (err) {
                     console.error(err);
                     process.exit(1);
