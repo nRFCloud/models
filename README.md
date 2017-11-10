@@ -90,6 +90,37 @@ Describes the status of the system.
 JSON Schema: [Status.schema.json](./src/model/Status.schema.json)  
 Source: [Status.ts](./src/model/Status.ts)
 
+### List
+
+Describes a list.
+
+```json
+{
+    "__context": "https://github.com/NordicPlayground/nrfcloud-custom-cards-client#List",
+    "__contextVersion": 1,
+    items: [
+        {
+            "__context": "...",
+            "__contextVersion": ...,
+            ...
+        }
+    ],
+    total: 1,
+    links: [
+        {
+            "__context": "https://github.com/NordicPlayground/nrfcloud-custom-cards-client#Link",
+            "__contextVersion": 1,
+            "href": "...",
+            "subject": "...",
+            "rel": "next" 
+        }
+    ]
+}
+```
+
+JSON Schema: [Link.schema.json](./src/List.schema.json)  
+Source: [Link.ts](./src/List.ts)
+
 ### Errors
 
 #### HttpProblem

@@ -1,26 +1,13 @@
 {
+    "title": "HttpProblemSchema",
+    "description": "See https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/",
+    "type": "object",
     "allOf": [
         {
             "$ref": "./VersionedContext.schema.json"
         },
         {
-            "title": "HttpProblemSchema",
-            "description": "See https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/",
-            "type": "object",
             "properties": {
-                "__context": {
-                    "example": "https://github.com/nRFCloud/models#ApiIndex",
-                    "pattern": "^https?:\\/\\/(((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])|((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)))(:(6553[0-5]|655[0-2]\\d|65[0-4]\\d\\d|6[0-4]\\d{3}|[1-5]\\d{4}|[1-9]\\d{0,3}|0))?(\\/[-a-zA-Z0-9@:%_+.,~?&/=()]*)*(#(?:[^#^[\\]{}\\\\\"<>%\\s]|%[0-9a-f]{2})*)*$",
-                    "type": "string",
-                    "description": "context for this model"
-                },
-                "__contextVersion": {
-                    "description": "version of the context",
-                    "example": 1,
-                    "type": "integer",
-                    "minimum": 1,
-                    "format": "int32"
-                },
                 "type": {
                     "type": "string",
                     "description": "A URI reference [RFC3986] that identifies the problem type. When dereferenced, it is encouraged to provide human-readable documentation for the problem type (e.g., using  HTML [W3C.REC-html401-19991224])."
@@ -43,8 +30,6 @@
             },
             "additionalProperties": false,
             "required": [
-                "__context",
-                "__contextVersion",
                 "type",
                 "title",
                 "status"

@@ -1,16 +1,16 @@
 {
-    "title": "ApiIndexSchema",
-    "description": "Describes entry points of an API.",
+    "title": "LinkedEntitySchema",
     "type": "object",
     "allOf": [
         {
             "$ref": "./VersionedContext.schema.json"
         },
         {
+            "type": "object",
             "properties": {
-                "links": {
+                "__links": {
                     "type": "array",
-                    "description": "Links to entry points",
+                    "description": "Links between entities",
                     "items": {
                         "$ref": "./Link.schema.json"
                     }
@@ -18,7 +18,7 @@
             },
             "additionalProperties": false,
             "required": [
-                "links"
+                "__links"
             ]
         }
     ]

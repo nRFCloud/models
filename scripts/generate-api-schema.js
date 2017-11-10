@@ -26,13 +26,6 @@ fs.readdir(srcDir, (err, files) => {
                 schema = removeExampleFromProperties(schema);
             }
             if (schema.allOf) {
-                // Copy title, description, type to resulting schema
-                schema = schema.allOf.reduce((schema, {title, description, type}) => ({
-                    ...schema,
-                    title,
-                    description,
-                    type
-                }), schema);
                 schema.allOf = schema.allOf.map(s => {
                     if (s.properties) {
                         return removeExampleFromProperties(s);
