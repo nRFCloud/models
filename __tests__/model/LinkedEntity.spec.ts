@@ -1,6 +1,4 @@
-import { Link } from '../../src/model/Link';
-import { LinkedEntity } from '../../src/model/LinkedEntity';
-import { URLValue } from '../../src/value/URLValue';
+import { Link, LinkedEntity, URLValue } from '../../';
 
 const l = new Link(new URLValue('https://example.com/api/custom-cards/foo/search?services=foo,bar&includePublic=false&offset=10'), new URLValue('http://example.com/jsonld/some'), 'next');
 

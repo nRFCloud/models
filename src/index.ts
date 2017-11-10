@@ -1,5 +1,7 @@
 export * from './value/URLValue';
 export * from './model/Link';
+export * from './model/List';
+export * from './model/LinkedEntity';
 export * from './model/VersionedContext';
 export * from './model/ApiIndex';
 export * from './model/Status';
