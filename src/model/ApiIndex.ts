@@ -1,8 +1,8 @@
-import {JSONSerializeable} from './JSONSerializeable';
-import {VersionedContext} from './VersionedContext';
-import {URLValue} from '../value/URLValue';
-import {Link} from './Link';
-import {ApiIndexSchema} from '../../dist/generated/ApiIndexSchema';
+import { JSONSerializeable } from './JSONSerializeable';
+import { VersionedContext } from './VersionedContext';
+import { URLValue } from '../value/URLValue';
+import { Link, LinkType } from './Link';
+import { ApiIndexSchema } from '../../dist/generated/ApiIndexSchema';
 
 /**
  * Describes entry points of an API
@@ -18,12 +18,7 @@ export class ApiIndex extends VersionedContext implements JSONSerializeable {
      */
     constructor(links: Array<Link>) {
         super(ApiIndex.$context, ApiIndex.$contextVersion);
-        links.forEach(l => {
-            if (!(l instanceof Link)) {
-                throw new TypeError(`APIIndex: provided links must contain "Link" instances: "${typeof l}" provided!`);
-            }
-        });
-        this.links = links;
+        this.links = links.map(l => LinkType(l, ['ApiIndex()', 'links:Link[]']));
     }
 
     static fromJSON({__context, __contextVersion, links}: ApiIndexSchema): ApiIndex {

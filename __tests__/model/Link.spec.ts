@@ -1,4 +1,4 @@
-import { URLValue, Link } from '../..';
+import { URLValue, Link, LinkType, MaybeLinkType } from '../..';
 
 const validateLink = link => {
     expect(link.href.equals(new URLValue('http://example.com/some-item/42'))).toEqual(true);
@@ -46,5 +46,29 @@ describe('Link', () => {
         it('should exist', () => {
             expect(Link.$context.toString()).toEqual('https://github.com/nRFCloud/models#Link');
         });
+    });
+});
+
+describe('LinkType', () => {
+    it('should accept a Link', () => {
+        expect(LinkType(new Link(new URLValue('http://example.com/some-item/42'), new URLValue('http://example.com/jsonld/some')))).toBeInstanceOf(Link);
+    });
+    it('should not accept another value', () => {
+        expect(() => LinkType('foo')).toThrow(TypeError);
+    });
+    it('should not accept an empty value', () => {
+        expect(() => LinkType()).toThrow(TypeError);
+    });
+});
+
+describe('MaybeLinkType', () => {
+    it('should accept a Link', () => {
+        expect(MaybeLinkType(new Link(new URLValue('http://example.com/some-item/42'), new URLValue('http://example.com/jsonld/some')))).toBeInstanceOf(Link);
+    });
+    it('should not accept another value', () => {
+        expect(() => MaybeLinkType('foo')).toThrow(TypeError);
+    });
+    it('should accept an empty value', () => {
+        expect(MaybeLinkType()).toBeUndefined();
     });
 });

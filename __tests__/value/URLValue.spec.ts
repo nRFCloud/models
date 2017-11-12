@@ -1,4 +1,4 @@
-import {URLValue} from '../..';
+import { URLValue, URLValueType, MaybeURLValueType } from '../..';
 
 // Test data from https://mathiasbynens.be/demo/url-regex
 
@@ -181,5 +181,29 @@ describe('URLValue', () => {
         it('should not contain hash', () => {
             expect(new URLValue('http://foo.example.com/foo#bar').path).toEqual('/foo');
         });
+    });
+});
+
+describe('URLValueType', () => {
+    it('should accept an URLValue', () => {
+        expect(URLValueType(new URLValue('http://foo.example.com'))).toBeInstanceOf(URLValue);
+    });
+    it('should not accept another value', () => {
+        expect(() => URLValueType('foo')).toThrow(TypeError);
+    });
+    it('should not accept an empty value', () => {
+        expect(() => URLValueType()).toThrow(TypeError);
+    });
+});
+
+describe('MaybeURLValueType', () => {
+    it('should accept an URLValue', () => {
+        expect(MaybeURLValueType(new URLValue('http://foo.example.com'))).toBeInstanceOf(URLValue);
+    });
+    it('should not accept another value', () => {
+        expect(() => MaybeURLValueType('foo')).toThrow(TypeError);
+    });
+    it('should accept an empty value', () => {
+        expect(MaybeURLValueType()).toBeUndefined();
     });
 });

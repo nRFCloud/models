@@ -1,7 +1,9 @@
-import {URLValue} from '../value/URLValue';
-import {VersionedContext} from './VersionedContext';
-import {JSONSerializeable} from './JSONSerializeable';
-import {LinkSchema} from '../../dist/generated/LinkSchema';
+import { URLValue, URLValueType } from '../value/URLValue';
+import { VersionedContext } from './VersionedContext';
+import { JSONSerializeable } from './JSONSerializeable';
+import { LinkSchema } from '../../dist/generated/LinkSchema';
+
+const t = require('tcomb');
 
 /**
  * Describes a link.
@@ -21,14 +23,8 @@ export class Link extends VersionedContext implements JSONSerializeable {
      */
     constructor(href: URLValue, subject: URLValue, rel?: string) {
         super(Link.$context, Link.$contextVersion);
-        if (!(href instanceof URLValue)) {
-            throw new TypeError(`Link: provided href is not an URI: "${href}"!`);
-        }
-        if (!(subject instanceof URLValue)) {
-            throw new TypeError(`Link: provided subject is not an URI: "${subject}"!`);
-        }
-        this.href = href;
-        this.subject = subject;
+        this.href = URLValueType(href, ['Link()', 'href:URLValue']);
+        this.subject = URLValueType(subject, ['Link()', 'subject:URLValue']);
         this.rel = rel;
     }
 
@@ -45,3 +41,6 @@ export class Link extends VersionedContext implements JSONSerializeable {
         };
     }
 }
+
+export const LinkType = t.irreducible('LinkType', x => x && x instanceof Link);
+export const MaybeLinkType = t.maybe(LinkType);

@@ -66,3 +66,6 @@ export class URLValue {
         return new URLValue(`${this}${str}`);
     }
 }
+
+export const URLValueType = t.irreducible('URLValueType', x => x && x instanceof URLValue);
+export const MaybeURLValueType = t.maybe(URLValueType);

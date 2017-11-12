@@ -1,6 +1,6 @@
 import { LinkedEntitySchema } from '../../dist/generated/LinkedEntitySchema';
 import { VersionedContext } from './VersionedContext';
-import { Link } from './Link';
+import { Link, LinkType } from './Link';
 import { URLValue } from '../value/URLValue';
 
 /**
@@ -18,12 +18,7 @@ export abstract class LinkedEntity extends VersionedContext {
      */
     constructor($context: URLValue, $contextVersion: number, $links: Array<Link> = []) {
         super($context, $contextVersion);
-        $links.map(l => {
-            if (!(l instanceof Link)) {
-                throw new TypeError(`ModelContext: provided $links must contain "Link" instances: "${typeof l}" provided!`);
-            }
-        });
-        this.$links = $links;
+        this.$links = $links.map(l => LinkType(l, ['LinkedEntity()', '$links:Link[]']));
     }
 
     toJSON(): LinkedEntitySchema {

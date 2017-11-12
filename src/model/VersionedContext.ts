@@ -1,5 +1,8 @@
-import {URLValue} from '../value/URLValue';
-import {VersionedContextSchema} from '../../dist/generated/VersionedContextSchema';
+import { URLValue, URLValueType } from '../value/URLValue';
+import { VersionedContextSchema } from '../../dist/generated/VersionedContextSchema';
+
+const t = require('tcomb');
+const PositiveIntegerType = t.refinement(t.Integer, (n: number) => n >= 1, 'PositiveIntegerType');
 
 export interface VersionedContextInterface {
     readonly $context: URLValue;
@@ -20,14 +23,8 @@ export abstract class VersionedContext implements VersionedContextInterface {
      * @param {number} $contextVersion version of the $context
      */
     constructor($context: URLValue, $contextVersion: number) {
-        if (!($context instanceof URLValue)) {
-            throw new TypeError(`VersionedContext: provided $context is not an URI: "${$context}"!`);
-        }
-        if ($contextVersion % 1 !== 0 || $contextVersion <= 0) {
-            throw new TypeError(`VersionedContext: provided $contextVersion is not an integer > 0: "${$contextVersion}"!`);
-        }
-        this.$context = $context;
-        this.$contextVersion = $contextVersion;
+        this.$context = URLValueType($context, ['VersionedContext()', '$context:URLValue']);
+        this.$contextVersion = PositiveIntegerType($contextVersion, ['VersionedContext()', '$contextVersion:int>=1']);
     }
 
     toJSON(): VersionedContextSchema {
