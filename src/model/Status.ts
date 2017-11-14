@@ -1,7 +1,7 @@
-import {JSONSerializeable} from './JSONSerializeable';
-import {VersionedContext} from './VersionedContext';
-import {URLValue} from '../value/URLValue';
-import {StatusSchema} from '../../dist/generated/StatusSchema';
+import { JSONSerializeable } from './JSONSerializeable';
+import { VersionedContext } from './VersionedContext';
+import { URLValue } from '../value/URLValue';
+import { StatusSchema } from '../../dist/generated/StatusSchema';
 
 /**
  * Describes the status of the system.

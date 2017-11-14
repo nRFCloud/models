@@ -1,6 +1,6 @@
-import {VersionedContext, VersionedContextInterface} from '../model/VersionedContext';
-import {URLValue} from '../value/URLValue';
-import {HttpProblemSchema} from '../../dist/generated/HttpProblemSchema';
+import { VersionedContext, VersionedContextInterface } from '../model/VersionedContext';
+import { URLValue } from '../value/URLValue';
+import { HttpProblemSchema } from '../../dist/generated/HttpProblemSchema';
 import { JSONSerializeable } from './JSONSerializeable';
 
 const t = require('tcomb');
