@@ -31,18 +31,18 @@
     "tcomb": "^3.2.24"
   },
   "devDependencies": {
-    "@commitlint/cli": "^5.2.3",
+    "@commitlint/cli": "^5.2.8",
     "@commitlint/config-angular": "^5.1.1",
-    "@nrfcloud/tslint-config": "^1.0.0",
-    "@types/jest": "^21.1.5",
+    "@nrfcloud/tslint-config": "^1.2.0",
+    "@types/jest": "^22.0.1",
     "@types/node": "^9.3.0",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
-    "json-schema-to-typescript": "^5.0.0",
-    "semantic-release": "^8.2.0",
-    "ts-jest": "^21.1.4",
+    "jest": "^22.0.4",
+    "json-schema-to-typescript": "^5.2.2",
+    "semantic-release": "^11.0.2",
+    "ts-jest": "^22.0.1",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.2"
   },
   "jest": {
     "moduleFileExtensions": [
