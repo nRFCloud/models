@@ -1,5 +1,5 @@
 import { URLValue, URLValueType } from '../value/URLValue';
-import { VersionedContextSchema } from '../../dist/generated/VersionedContextSchema';
+import { VersionedContext as VersionedContextSchema } from '../../dist/schema/VersionedContext';
 
 const t = require('tcomb');
 const PositiveIntegerType = t.refinement(t.Integer, (n: number) => n >= 1, 'PositiveIntegerType');
@@ -29,8 +29,8 @@ export abstract class VersionedContext implements VersionedContextInterface {
 
     toJSON(): VersionedContextSchema {
         return {
-            __context: this.$context.toString(),
-            __contextVersion: this.$contextVersion,
+            $context: this.$context.toString(),
+            $contextVersion: this.$contextVersion,
         };
     }
 

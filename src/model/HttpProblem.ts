@@ -1,6 +1,6 @@
 import { VersionedContext, VersionedContextInterface } from '../model/VersionedContext';
 import { URLValue } from '../value/URLValue';
-import { HttpProblemSchema } from '../../dist/generated/HttpProblemSchema';
+import { HttpProblem as HttpProblemSchema } from '../../dist/schema/HttpProblem';
 import { JSONSerializeable } from './JSONSerializeable';
 
 const t = require('tcomb');
@@ -47,10 +47,10 @@ export class HttpProblem extends Error implements VersionedContextInterface, JSO
         this.detail = MaybeNonEmpytyStringType(detail, ['HttpProblem', 'detail:?String']);
     }
 
-    static fromJSON({__context, __contextVersion, type, title, status, detail}: HttpProblemSchema): HttpProblem {
+    static fromJSON({$context, $contextVersion, type, title, status, detail}: HttpProblemSchema): HttpProblem {
         VersionedContext.checkContextVersion(HttpProblem, {
-            $context: URLValue.fromString(__context, ['HttpProblem.fromJSON()', '$context:URLValue']),
-            $contextVersion: __contextVersion
+            $context: URLValue.fromString($context, ['HttpProblem.fromJSON()', '$context:URLValue']),
+            $contextVersion: $contextVersion
         });
         return new HttpProblem(
             new URLValue(type),
@@ -63,8 +63,8 @@ export class HttpProblem extends Error implements VersionedContextInterface, JSO
     toJSON(): HttpProblemSchema {
         const {$context, $contextVersion, type, title, status, detail} = this;
         return {
-            __context: $context.toString(),
-            __contextVersion: $contextVersion,
+            $context: $context.toString(),
+            $contextVersion: $contextVersion,
             type: type.toString(),
             title,
             status,

@@ -1,24 +1,24 @@
 {
-    "title": "LinkedEntitySchema",
+    "title": "LinkedEntity",
     "type": "object",
     "allOf": [
         {
-            "$ref": "./VersionedContext.schema.json"
+            "$ref": "./VersionedContext.json"
         },
         {
             "type": "object",
             "properties": {
-                "__links": {
+                "$links": {
                     "type": "array",
                     "description": "Links between entities",
                     "items": {
-                        "$ref": "./Link.schema.json"
+                        "$ref": "./Link.json"
                     }
                 }
             },
             "additionalProperties": false,
             "required": [
-                "__links"
+                "$links"
             ]
         }
     ]

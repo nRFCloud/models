@@ -1,10 +1,10 @@
 {
-    "title": "LinkSchema",
+    "title": "Link",
     "description": "Describes a link.",
     "type": "object",
     "allOf": [
         {
-            "$ref": "./VersionedContext.schema.json"
+            "$ref": "./VersionedContext.json"
         },
         {
             "properties": {
@@ -29,8 +29,7 @@
             "additionalProperties": false,
             "required": [
                 "href",
-                "subject",
-                "rel"
+                "subject"
             ]
         }
     ]

@@ -1,5 +1,5 @@
 export class ApplicationError extends Error {
-    constructor(...params) {
+    constructor(...params: any[]) {
         super(...params);
         this.name = ApplicationError.name;
         Error.captureStackTrace(this, ApplicationError);

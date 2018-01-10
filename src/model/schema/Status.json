@@ -1,10 +1,10 @@
 {
-    "title": "StatusSchema",
+    "title": "Status",
     "description": "Describes the status of the system.",
     "type": "object",
     "allOf": [
         {
-            "$ref": "./VersionedContext.schema.json"
+            "$ref": "./VersionedContext.json"
         },
         {
             "properties": {

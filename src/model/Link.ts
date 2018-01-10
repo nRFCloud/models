@@ -1,7 +1,7 @@
 import { URLValue, URLValueType } from '../value/URLValue';
 import { VersionedContext } from './VersionedContext';
 import { JSONSerializeable } from './JSONSerializeable';
-import { LinkSchema } from '../../dist/generated/LinkSchema';
+import { Link as LinkSchema } from '../../dist/schema/Link';
 
 const t = require('tcomb');
 
@@ -13,7 +13,7 @@ export class Link extends VersionedContext implements JSONSerializeable {
     static $contextVersion = 1;
     readonly href: URLValue;
     readonly subject: URLValue;
-    readonly rel: string;
+    readonly rel?: string;
 
     /**
      * @param {URLValue} href URL to retrieve the link
@@ -28,8 +28,8 @@ export class Link extends VersionedContext implements JSONSerializeable {
         this.rel = rel;
     }
 
-    static fromJSON({__context, __contextVersion, href, subject, rel}: LinkSchema): Link {
-        VersionedContext.checkContextVersion(Link, {$context: URLValue.fromString(__context, ['Link.fromJSON()', '$context:URLValue']), $contextVersion: __contextVersion});
+    static fromJSON({$context, $contextVersion, href, subject, rel}: LinkSchema): Link {
+        VersionedContext.checkContextVersion(Link, {$context: URLValue.fromString($context, ['Link.fromJSON()', '$context:URLValue']), $contextVersion: $contextVersion});
         return new Link(URLValue.fromString(href, ['Link.fromJSON()', 'href:URLValue']), URLValue.fromString(subject, ['Link.fromJSON()', 'subject:URLValue']), rel);
     }
 
@@ -42,5 +42,5 @@ export class Link extends VersionedContext implements JSONSerializeable {
     }
 }
 
-export const LinkType = t.irreducible('LinkType', x => x && x instanceof Link);
+export const LinkType = t.irreducible('LinkType', (x: Link) => x && x instanceof Link);
 export const MaybeLinkType = t.maybe(LinkType);

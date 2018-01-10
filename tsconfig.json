@@ -1,33 +1,10 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "declaration": true,
-        "strictNullChecks": false,
-        "removeComments": false,
-        "noUnusedParameters": false,
-        "noUnusedLocals": true,
-        "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": true,
-        "outDir": "dist/",
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "types": [
-            "node",
-            "jest"
-        ],
-        "lib": [
-            "dom",
-            "es2015",
-            "es2016",
-            "es7"
-        ]
+        "target": "ES6",
+        "strict": true,
+        "outDir": "dist/"
     },
-    "exclude": [
-        "node_modules",
-        "__tests__"
-    ],
     "include": [
         "src/**/*"
     ]

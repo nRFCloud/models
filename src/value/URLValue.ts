@@ -26,13 +26,13 @@ export class URLValue {
             throw new TypeError(`URLValue: Not an URI: "${url}!`);
         }
         this.uri = url;
-        this.protocol = url.match(/^(https?:\/\/)/)[1];
-        this.hostname = url.match(/^https?:\/\/([^\/]+)/)[1];
+        this.protocol = (url.match(/^(https?:\/\/)/) || [])[1];
+        this.hostname = (url.match(/^https?:\/\/([^\/]+)/) || [])[1];
         this.query = /^[^#]+\?/.test(url) ? url.split('?', 2)[1].split('&').reduce((query, param) => {
             const [k, v] = param.split('=', 2);
             return {...query, [decodeURIComponent(k)]: v ? decodeURIComponent(v) : ''};
         }, {}) : {};
-        this.path = (url.replace(/^https?:\/\/([^\/]+)/, '') || '/').match(/^([^\?#]+)/)[1];
+        this.path = ((url.replace(/^https?:\/\/([^\/]+)/, '') || '/').match(/^([^\?#]+)/) || [])[1];
     }
 
     /**
@@ -67,5 +67,5 @@ export class URLValue {
     }
 }
 
-export const URLValueType = t.irreducible('URLValueType', x => x && x instanceof URLValue);
+export const URLValueType = t.irreducible('URLValueType', (x: URLValue) => x && x instanceof URLValue);
 export const MaybeURLValueType = t.maybe(URLValueType);

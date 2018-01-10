@@ -1,10 +1,10 @@
 {
-    "title": "HttpProblemSchema",
+    "title": "HttpProblem",
     "description": "See https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/",
     "type": "object",
     "allOf": [
         {
-            "$ref": "./VersionedContext.schema.json"
+            "$ref": "./VersionedContext.json"
         },
         {
             "properties": {

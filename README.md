@@ -32,19 +32,19 @@ Describes entry points of an API.
 
 ```json
 {
-    "__context": "https://github.com/nRFCloud/models#ApiIndex",
-    "__contextVersion": 1,
+    "$context": "https://github.com/nRFCloud/models#ApiIndex",
+    "$contextVersion": 1,
     "links": [
         {
-            "__context": "https://github.com/nRFCloud/models#Link",
-            "__contextVersion": 1,
+            "$context": "https://github.com/nRFCloud/models#Link",
+            "$contextVersion": 1,
             "href": "https://foo.iot.us-east-1.amazonaws.com",
             "subject": "https://aws.amazon.com/iot-platform/",
             "rel": "production" 
         },
         {
-            "__context": "https://github.com/nRFCloud/models#Link",
-            "__contextVersion": 1,
+            "$context": "https://github.com/nRFCloud/models#Link",
+            "$contextVersion": 1,
             "href": "https://bar.execute-api.us-east-1.amazonaws.com/prod",
             "subject": "https://nrfcloud.com/",
             "rel": "production" 
@@ -62,8 +62,8 @@ Describes a link.
 
 ```json
 {
-    "__context": "https://github.com/nRFCloud/models#Link",
-    "__contextVersion": 1,
+    "$context": "https://github.com/nRFCloud/models#Link",
+    "$contextVersion": 1,
     "href": "https://api.nrfcloud.com/stage/custom-cards/foo/some-id",
     "subject": "https://github.com/nRFCloud/models#CustomCard",
     "rel": "next" 
@@ -79,8 +79,8 @@ Describes the status of the system.
 
 ```json
 {
-    "__context": "https://github.com/nRFCloud/models#Status",
-    "__contextVersion": 1,
+    "$context": "https://github.com/nRFCloud/models#Status",
+    "$contextVersion": 1,
     "maintenance": false,
     "version": "1.0.0-beta.1",
     "time: "2017-10-02T11:05:46.793Z"
@@ -96,20 +96,20 @@ Describes a list.
 
 ```json
 {
-    "__context": "https://github.com/NordicPlayground/nrfcloud-custom-cards-client#List",
-    "__contextVersion": 1,
+    "$context": "https://github.com/NordicPlayground/nrfcloud-custom-cards-client#List",
+    "$contextVersion": 1,
     items: [
         {
-            "__context": "...",
-            "__contextVersion": ...,
+            "$context": "...",
+            "$contextVersion": ...,
             ...
         }
     ],
     total: 1,
     links: [
         {
-            "__context": "https://github.com/NordicPlayground/nrfcloud-custom-cards-client#Link",
-            "__contextVersion": 1,
+            "$context": "https://github.com/NordicPlayground/nrfcloud-custom-cards-client#Link",
+            "$contextVersion": 1,
             "href": "...",
             "subject": "...",
             "rel": "next" 
@@ -129,8 +129,8 @@ All error responses are expressed using this message format. See <https://datatr
 
 ```json
 {
-	"__context" : "https://www.ietf.org/id/draft-ietf-appsawg-http-problem-01.txt",
-	"__contextVersion" : 1,
+	"$context" : "https://www.ietf.org/id/draft-ietf-appsawg-http-problem-01.txt",
+	"$contextVersion" : 1,
 	"type" : "https://github.com/nRFCloud/models#EntityNotFoundError",
 	"title" : "Entity not found",
 	"status" : 404,

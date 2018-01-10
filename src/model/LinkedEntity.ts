@@ -1,4 +1,4 @@
-import { LinkedEntitySchema } from '../../dist/generated/LinkedEntitySchema';
+import { LinkedEntity as LinkedEntitySchema } from '../../dist/schema/LinkedEntity';
 import { VersionedContext } from './VersionedContext';
 import { Link, LinkType } from './Link';
 import { URLValue } from '../value/URLValue';
@@ -24,7 +24,7 @@ export abstract class LinkedEntity extends VersionedContext {
     toJSON(): LinkedEntitySchema {
         return {
             ...super.toJSON(),
-            ...{__links: this.$links.length ? this.$links.map(l => l.toJSON()) : undefined}
+            ...{$links: this.$links.length ? this.$links.map(l => l.toJSON()) : []}
         };
     }
 }

@@ -2,7 +2,7 @@ import { LinkedEntity } from './LinkedEntity';
 import { JSONSerializeable } from './JSONSerializeable';
 import { URLValue } from '../value/URLValue';
 import { Link } from './Link';
-import { ListSchema } from '../../dist/generated/ListSchema';
+import { List as ListSchema } from '../../dist/schema/List';
 
 const t = require('tcomb');
 const ZeroOrPositiveInteger = t.refinement(t.Integer, (n: number) => n >= 0, 'ZeroOrPositiveInteger');
@@ -34,15 +34,15 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
         this.hasPrev = this.$links.filter(link => link.rel === 'prev').length > 0;
     }
 
-    static fromJSON({__context, __contextVersion, items, total, __links}: ListSchema, itemTransformer: Function): List<any> {
+    static fromJSON({$context, $contextVersion, items, total, $links}: ListSchema, itemTransformer: Function): List<any> {
         LinkedEntity.checkContextVersion(List, {
-            $context: URLValue.fromString(__context, ['List.fromJSON()', '$context:URLValue']),
-            $contextVersion: __contextVersion
+            $context: URLValue.fromString($context, ['List.fromJSON()', '$context:URLValue']),
+            $contextVersion: $contextVersion
         });
         return new List(
             items.map(i => itemTransformer(i)),
             total,
-            __links ? __links.map(l => Link.fromJSON(l)) : undefined
+            $links ? $links.map(l => Link.fromJSON(l)) : undefined
         );
     }
 
@@ -51,7 +51,7 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
         const s = super.toJSON();
         return {
             ...s,
-            __links: s.__links || [],
+            $links: s.$links || [],
             ...{
                 items: items.map(i => i.toJSON()),
                 total

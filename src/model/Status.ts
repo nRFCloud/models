@@ -1,7 +1,7 @@
 import { JSONSerializeable } from './JSONSerializeable';
 import { VersionedContext } from './VersionedContext';
 import { URLValue } from '../value/URLValue';
-import { StatusSchema } from '../../dist/generated/StatusSchema';
+import { Status as StatusSchema } from '../../dist/schema/Status';
 
 /**
  * Describes the status of the system.
@@ -38,10 +38,10 @@ export class Status extends VersionedContext implements JSONSerializeable {
         this.time = time;
     }
 
-    static fromJSON({__context, __contextVersion, maintenance, version, time}: StatusSchema): Status {
+    static fromJSON({$context, $contextVersion, maintenance, version, time}: StatusSchema): Status {
         VersionedContext.checkContextVersion(Status, {
-            $context: URLValue.fromString(__context, ['Status.fromJSON()', '$context:URLValue']),
-            $contextVersion: __contextVersion
+            $context: URLValue.fromString($context, ['Status.fromJSON()', '$context:URLValue']),
+            $contextVersion: $contextVersion
         });
         return new Status(maintenance, version, new Date(time));
     }

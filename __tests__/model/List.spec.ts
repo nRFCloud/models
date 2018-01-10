@@ -72,7 +72,7 @@ describe('List', () => {
                 expect(jsondata.items).toBeInstanceOf(Array);
             });
             test('if empty $links given, it should be empty in JSON', () => {
-                expect(jsondata.__links).toBeInstanceOf(Array);
+                expect(jsondata.$links).toBeInstanceOf(Array);
             });
         });
     });

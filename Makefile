@@ -4,23 +4,18 @@ build/client.js: assets/test/client.ts dist node_modules/iris-web-api/index.bund
 	@mkdir -p $(dir $@)
 	./node_modules/.bin/browserify $< -p [ tsify --noImplicitAny ] > $@
 
-dist/generated: src/model/*.schema.json
+dist/schema: src/model/schema/*.json
 	@mkdir -p $@
-	node scripts/generate-base-models-from-schema.js src/model $@
-	mkdir -p dist/model
-	cp src/model/*.schema.json dist/model
+	node scripts/generate-base-models-from-schema.js src/model/schema/ $@
+	cp src/model/schema/*.json $@
 
-dist: src/*.ts dist/generated
+dist: src/*.ts dist/schema
 	@mkdir -p $@
 	./node_modules/.bin/tsc
 
-dist/api-schema: src/model/*.schema.json
-	@mkdir -p $@
-	node scripts/generate-api-schema.js src/model/ $@
-
 test-prepare: dist
 
-release: dist dist/api-schema
+release: dist
 
 clean:
 	rm -rf dist
