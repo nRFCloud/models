@@ -54,7 +54,7 @@ Describes entry points of an API.
 }
 ```
 
-JSON Schema: [ApiIndex.schema.json](./src/model/ApiIndex.schema.json)  
+JSON Schema: [ApiIndex.json](./src/model/schema/ApiIndex.json)  
 Source: [ApiIndex.ts](./src/model/Link.ts)
 
 ### Link
@@ -71,7 +71,7 @@ Describes a link.
 }
 ```
 
-JSON Schema: [Link.schema.json](./src/model/Link.schema.json)  
+JSON Schema: [Link.json](./src/model/schema/Link.json)  
 Source: [Link.ts](./src/model/Link.ts)
 
 ### Status
@@ -88,7 +88,7 @@ Describes the status of the system.
 }
 ```
 
-JSON Schema: [Status.schema.json](./src/model/Status.schema.json)  
+JSON Schema: [Status.json](./src/model/schema/Status.json)  
 Source: [Status.ts](./src/model/Status.ts)
 
 ### List
@@ -119,7 +119,7 @@ Describes a list.
 }
 ```
 
-JSON Schema: [Link.schema.json](./src/List.schema.json)  
+JSON Schema: [Link.json](./src/List.json)  
 Source: [Link.ts](./src/List.ts)
 
 ### Errors
@@ -139,7 +139,7 @@ All error responses are expressed using this message format. See <https://datatr
 }
 ```
 
-JSON Schema: [HttpProblem.schema.json](./src/HttpProblem.schema.json)  
+JSON Schema: [HttpProblem.json](./src/HttpProblem.json)  
 Source: [HttpProblem.ts](./src/HttpProblem.ts)
 
 #### AccessDeniedError
