@@ -11,3 +11,13 @@ export * from './error/BadRequestError';
 export * from './error/AccessDeniedError';
 export * from './error/EntityNotFoundError';
 export * from './error/ApplicationError';
+
+export const schemas = [
+    require('./model/schema/ApiIndex.json'),
+    require('./model/schema/HttpProblem.json'),
+    require('./model/schema/Link.json'),
+    require('./model/schema/LinkedEntity.json'),
+    require('./model/schema/List.json'),
+    require('./model/schema/Status.json'),
+    require('./model/schema/VersionedContext.json')
+];
