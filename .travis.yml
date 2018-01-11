@@ -1,22 +1,23 @@
 language: node_js
 cache:
   directories:
-  - "$HOME/.npm"
+    - node_modules
 notifications:
   email: false
 before_install:
-  - npm install -g npmc
-  - npmc install -g greenkeeper-lockfile@1
+  - npm install -g npm@5
+  - npm install -g greenkeeper-lockfile@1
 install:
-  - npmc ci
+  - npm install
+  - npm prune
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 script:
-  - npmc run lint
-  - npmc run test:coverage
+  - npm run lint
+  - npm run test:coverage
 after_success:
   - make release
-  - npmc run semantic-release
+  - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
