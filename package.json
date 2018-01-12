@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^6.0.1",
-    "@commitlint/config-angular": "^5.1.1",
+    "@commitlint/config-angular": "^6.0.2",
     "@nrfcloud/tslint-config": "^1.2.0",
     "@types/jest": "^22.0.1",
     "@types/node": "^9.3.0",
