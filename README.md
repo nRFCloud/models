@@ -8,6 +8,8 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![DeepScan Grade](https://deepscan.io/api/projects/834/branches/1773/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=834&bid=1773)
 [![Known Vulnerabilities](https://snyk.io/test/github/nrfcloud/models/badge.svg)](https://snyk.io/test/github/nrfcloud/models)
+[![Maintainability](https://api.codeclimate.com/v1/badges/77460b33109bf68022e7/maintainability)](https://codeclimate.com/github/nRFCloud/models/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/77460b33109bf68022e7/test_coverage)](https://codeclimate.com/github/nRFCloud/models/test_coverage)
 
 Contains model definitions for the REST API.
 
