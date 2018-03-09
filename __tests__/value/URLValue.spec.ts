@@ -96,7 +96,7 @@ const badURIs = [
 describe('URLValue', () => {
     describe('constructor()', function () {
         it('should parse an URI', () => {
-            goodURIs.map(uri => {
+            goodURIs.forEach(uri => {
                 let u = new URLValue(uri);
                 expect(u.toString()).toEqual(uri);
             });
@@ -108,7 +108,7 @@ describe('URLValue', () => {
         });
 
         it('should not parse invalid URIs', () => {
-            badURIs.map(uri => {
+            badURIs.forEach(uri => {
                 expect(() => {
                     new URLValue(uri.toString());
                 }).toThrow(TypeError);

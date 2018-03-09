@@ -18,7 +18,6 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
     readonly total: number;
     readonly hasNext: boolean;
     readonly hasPrev: boolean;
-    readonly $links: Array<Link>;
 
     /**
      * @param {Array} items Items in the list
