@@ -1,4 +1,5 @@
 {
+    "$schema": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject",
     "title": "VersionedContext",
     "description": "All entities require a 'context' which explicitly types their JSON representation. The version is used to express schema changes per entity.",
     "type": "object",

@@ -1,4 +1,5 @@
 {
+    "$schema": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject",
     "title": "List",
     "type": "object",
     "description": "Describes a list if items. Can contain links to e.g. fetch the next page in a result set.",

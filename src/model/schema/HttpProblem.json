@@ -1,4 +1,5 @@
 {
+    "$schema": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject",
     "title": "HttpProblem",
     "description": "See https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/",
     "type": "object",
