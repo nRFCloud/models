@@ -24,7 +24,7 @@ export abstract class LinkedEntity extends VersionedContext {
     toJSON(): LinkedEntitySchema {
         return {
             ...super.toJSON(),
-            ...{$links: this.$links.length ? this.$links.map(l => l.toJSON()) : []}
+            ...{$links: this.$links.length ? this.$links.map(l => l.toJSON()) : []},
         };
     }
 }

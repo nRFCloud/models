@@ -37,7 +37,7 @@ export class Link extends VersionedContext implements JSONSerializeable {
         const {href, subject, rel} = this;
         return {
             ...super.toJSON(),
-            ...{href: href.toString(), subject: subject.toString(), rel}
+            ...{href: href.toString(), subject: subject.toString(), rel},
         };
     }
 }

@@ -41,7 +41,7 @@ export class Status extends VersionedContext implements JSONSerializeable {
     static fromJSON({$context, $contextVersion, maintenance, version, time}: StatusSchema): Status {
         VersionedContext.checkContextVersion(Status, {
             $context: URLValue.fromString($context, ['Status.fromJSON()', '$context:URLValue']),
-            $contextVersion: $contextVersion
+            $contextVersion: $contextVersion,
         });
         return new Status(maintenance, version, new Date(time));
     }

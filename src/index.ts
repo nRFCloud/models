@@ -19,5 +19,5 @@ export const schemas = [
     require('./model/schema/LinkedEntity.json'),
     require('./model/schema/List.json'),
     require('./model/schema/Status.json'),
-    require('./model/schema/VersionedContext.json')
+    require('./model/schema/VersionedContext.json'),
 ];

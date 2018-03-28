@@ -36,12 +36,12 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
     static fromJSON({$context, $contextVersion, items, total, $links}: ListSchema, itemTransformer: Function): List<any> {
         LinkedEntity.checkContextVersion(List, {
             $context: URLValue.fromString($context, ['List.fromJSON()', '$context:URLValue']),
-            $contextVersion: $contextVersion
+            $contextVersion: $contextVersion,
         });
         return new List(
             items.map(i => itemTransformer(i)),
             total,
-            $links ? $links.map(l => Link.fromJSON(l)) : undefined
+            $links ? $links.map(l => Link.fromJSON(l)) : undefined,
         );
     }
 
@@ -53,8 +53,8 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
             $links: s.$links || [],
             ...{
                 items: items.map(i => i.toJSON()),
-                total
-            }
+                total,
+            },
         };
     }
 }

@@ -50,13 +50,13 @@ export class HttpProblem extends Error implements VersionedContextInterface, JSO
     static fromJSON({$context, $contextVersion, type, title, status, detail}: HttpProblemSchema): HttpProblem {
         VersionedContext.checkContextVersion(HttpProblem, {
             $context: URLValue.fromString($context, ['HttpProblem.fromJSON()', '$context:URLValue']),
-            $contextVersion: $contextVersion
+            $contextVersion: $contextVersion,
         });
         return new HttpProblem(
             new URLValue(type),
             title,
             status,
-            detail
+            detail,
         );
     }
 
@@ -68,7 +68,7 @@ export class HttpProblem extends Error implements VersionedContextInterface, JSO
             type: type.toString(),
             title,
             status,
-            detail
+            detail,
         };
     }
 }
