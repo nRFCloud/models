@@ -16,24 +16,24 @@ class DummyModel extends LinkedEntity {
     }
 
     toJSON(): DummyModelSchema {
-        const {name} = this;
+        const { name } = this;
         return {
             ...super.toJSON(),
-            ...{name}
+            ...{ name },
         };
     }
 }
 
-declare type DummyModelSchema = (LinkedEntitySchema & {
+declare type DummyModelSchema = LinkedEntitySchema & {
     name: string;
-});
+};
 
 const items = [new DummyModel('foo')];
 
 const link = new Link(
     new URLValue('http://example.com/some-item/42'),
     new URLValue('http://example.com/jsonld/some'),
-    'next'
+    'next',
 );
 
 function validateList(list) {
@@ -50,24 +50,27 @@ describe('List', () => {
             const list = new List(items, 1, [link]);
             validateList(list);
         });
-        it('should parse it\'s own values', () => {
+        it("should parse it's own values", () => {
             const list = new List(items, 1, [link]);
-            const list2 = new List(
-                list.items,
-                list.total,
-                list.$links,
-            );
+            const list2 = new List(list.items, list.total, list.$links);
             validateList(list2);
         });
     });
 
     describe('JSON', () => {
-        it('should parse it\'s JSON representation', () => {
-            validateList(List.fromJSON(JSON.parse(JSON.stringify(new List(items, 1, [link]))), s => s));
+        it("should parse it's JSON representation", () => {
+            validateList(
+                List.fromJSON(
+                    JSON.parse(JSON.stringify(new List(items, 1, [link]))),
+                    s => s,
+                ),
+            );
         });
 
         describe('should always return empty item and link arrays', () => {
-            const jsondata: ListSchema = JSON.parse(JSON.stringify(new List([], 0)));
+            const jsondata: ListSchema = JSON.parse(
+                JSON.stringify(new List([], 0)),
+            );
             test('if empty items given, it should be empty in JSON', () => {
                 expect(jsondata.items).toBeInstanceOf(Array);
             });
@@ -79,7 +82,9 @@ describe('List', () => {
 
     describe('$context', () => {
         it('should exist', () => {
-            expect(List.$context.toString()).toEqual('https://github.com/nRFCloud/models#List');
+            expect(List.$context.toString()).toEqual(
+                'https://github.com/nRFCloud/models#List',
+            );
         });
     });
 });

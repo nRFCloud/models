@@ -29,16 +29,35 @@ export class Link extends VersionedContext implements JSONSerializeable {
         this.rel = rel;
     }
 
-    static fromJSON({$context, $contextVersion, href, subject, rel}: LinkSchema): Link {
-        VersionedContext.checkContextVersion(Link, {$context: URLValue.fromString($context, ['Link.fromJSON()', '$context:URLValue']), $contextVersion: $contextVersion});
-        return new Link(URLValue.fromString(href, ['Link.fromJSON()', 'href:URLValue']), URLValue.fromString(subject, ['Link.fromJSON()', 'subject:URLValue']), rel);
+    static fromJSON({
+        $context,
+        $contextVersion,
+        href,
+        subject,
+        rel,
+    }: LinkSchema): Link {
+        VersionedContext.checkContextVersion(Link, {
+            $context: URLValue.fromString($context, [
+                'Link.fromJSON()',
+                '$context:URLValue',
+            ]),
+            $contextVersion: $contextVersion,
+        });
+        return new Link(
+            URLValue.fromString(href, ['Link.fromJSON()', 'href:URLValue']),
+            URLValue.fromString(subject, [
+                'Link.fromJSON()',
+                'subject:URLValue',
+            ]),
+            rel,
+        );
     }
 
     toJSON(): LinkSchema {
-        const {href, subject, rel} = this;
+        const { href, subject, rel } = this;
         return {
             ...super.toJSON(),
-            ...{href: href.toString(), subject: subject.toString(), rel},
+            ...{ href: href.toString(), subject: subject.toString(), rel },
         };
     }
 }

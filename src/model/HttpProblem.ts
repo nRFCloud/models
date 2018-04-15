@@ -1,19 +1,33 @@
-import { VersionedContext, VersionedContextInterface } from '../model/VersionedContext';
+import {
+    VersionedContext,
+    VersionedContextInterface,
+} from '../model/VersionedContext';
 import { URLValue } from '../value/URLValue';
 import { HttpProblem as HttpProblemSchema } from '../../dist/schema/HttpProblem';
 import { JSONSerializeable } from './JSONSerializeable';
 
 const t = require('tcomb');
 
-const NonEmpytyStringType = t.refinement(t.String, (s: string) => s && s.length > 0, 'MaybeNonEmpytyStringType');
+const NonEmpytyStringType = t.refinement(
+    t.String,
+    (s: string) => s && s.length > 0,
+    'MaybeNonEmpytyStringType',
+);
 const MaybeNonEmpytyStringType = t.maybe(NonEmpytyStringType);
-const HttpStatusCodeType = t.refinement(t.Integer, (n: number) => n >= 100 && n < 600, 'HttpStatusCodeType');
+const HttpStatusCodeType = t.refinement(
+    t.Integer,
+    (n: number) => n >= 100 && n < 600,
+    'HttpStatusCodeType',
+);
 
 /**
  * See https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/
  */
-export class HttpProblem extends Error implements VersionedContextInterface, JSONSerializeable {
-    static $context = new URLValue('https://www.ietf.org/id/draft-ietf-appsawg-http-problem-01.txt');
+export class HttpProblem extends Error
+    implements VersionedContextInterface, JSONSerializeable {
+    static $context = new URLValue(
+        'https://www.ietf.org/id/draft-ietf-appsawg-http-problem-01.txt',
+    );
     static $contextVersion = 1;
 
     readonly $context: URLValue;
@@ -35,33 +49,52 @@ export class HttpProblem extends Error implements VersionedContextInterface, JSO
      * @param {String} detail   An human readable explanation specific to this occurrence of the problem.
      * @constructor
      */
-    constructor(type: URLValue, title: string, status: number, detail?: string) {
+    constructor(
+        type: URLValue,
+        title: string,
+        status: number,
+        detail?: string,
+    ) {
         super(title);
         Object.setPrototypeOf(this, HttpProblem.prototype);
         this.$context = HttpProblem.$context;
         this.$contextVersion = HttpProblem.$contextVersion;
         this.name = HttpProblem.name;
         this.type = type;
-        this.title = NonEmpytyStringType(title, ['HttpProblem', 'title:String']);
-        this.status = HttpStatusCodeType(status, ['HttpProblem', 'status:HttpStatusCode']);
-        this.detail = MaybeNonEmpytyStringType(detail, ['HttpProblem', 'detail:?String']);
+        this.title = NonEmpytyStringType(title, [
+            'HttpProblem',
+            'title:String',
+        ]);
+        this.status = HttpStatusCodeType(status, [
+            'HttpProblem',
+            'status:HttpStatusCode',
+        ]);
+        this.detail = MaybeNonEmpytyStringType(detail, [
+            'HttpProblem',
+            'detail:?String',
+        ]);
     }
 
-    static fromJSON({$context, $contextVersion, type, title, status, detail}: HttpProblemSchema): HttpProblem {
+    static fromJSON({
+        $context,
+        $contextVersion,
+        type,
+        title,
+        status,
+        detail,
+    }: HttpProblemSchema): HttpProblem {
         VersionedContext.checkContextVersion(HttpProblem, {
-            $context: URLValue.fromString($context, ['HttpProblem.fromJSON()', '$context:URLValue']),
+            $context: URLValue.fromString($context, [
+                'HttpProblem.fromJSON()',
+                '$context:URLValue',
+            ]),
             $contextVersion: $contextVersion,
         });
-        return new HttpProblem(
-            new URLValue(type),
-            title,
-            status,
-            detail,
-        );
+        return new HttpProblem(new URLValue(type), title, status, detail);
     }
 
     toJSON(): HttpProblemSchema {
-        const {$context, $contextVersion, type, title, status, detail} = this;
+        const { $context, $contextVersion, type, title, status, detail } = this;
         return {
             $context: $context.toString(),
             $contextVersion: $contextVersion,

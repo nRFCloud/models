@@ -54,7 +54,7 @@ const badURIs = [
     'http://مثال.إختبار',
     'http://例子.测试',
     'http://उदाहरण.परीक्षा',
-    'http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com',
+    "http://-.~_!$&'()*+,;=:%40:80%2f::::::@example.com",
     'ftp://foo.bar/baz', // Scheme not supported
     // Illegal URIs
     'http://',
@@ -103,7 +103,9 @@ describe('URLValue', () => {
         });
 
         it('should parse an instance of URLValue', () => {
-            const u = new URLValue(new URLValue('https://example.com/').slashless());
+            const u = new URLValue(
+                new URLValue('https://example.com/').slashless(),
+            );
             expect(u.toString()).toEqual('https://example.com');
         });
 
@@ -116,18 +118,30 @@ describe('URLValue', () => {
         });
         describe('slashless()', () => {
             it('should return a copy with out a slash', () => {
-                expect((new URLValue('https://example.com/')).slashless().toString()).toEqual('https://example.com');
-                expect((new URLValue('https://example.com')).slashless().toString()).toEqual('https://example.com');
+                expect(
+                    new URLValue('https://example.com/').slashless().toString(),
+                ).toEqual('https://example.com');
+                expect(
+                    new URLValue('https://example.com').slashless().toString(),
+                ).toEqual('https://example.com');
             });
         });
     });
 
     describe('.equals()', () => {
         it('should return true for the same URLs', () => {
-            expect(new URLValue('https://example.com').equals(new URLValue('https://example.com'))).toEqual(true);
+            expect(
+                new URLValue('https://example.com').equals(
+                    new URLValue('https://example.com'),
+                ),
+            ).toEqual(true);
         });
         it('should return false for different URLs', () => {
-            expect(new URLValue('https://example.com').equals(new URLValue('http://example.com'))).toEqual(false);
+            expect(
+                new URLValue('https://example.com').equals(
+                    new URLValue('http://example.com'),
+                ),
+            ).toEqual(false);
         });
     });
 
@@ -142,51 +156,87 @@ describe('URLValue', () => {
 
     describe('hostname', () => {
         it('should return the hostname part of the URL', () => {
-            expect(new URLValue('http://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz').hostname).toEqual('foo.example.com');
+            expect(
+                new URLValue(
+                    'http://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz',
+                ).hostname,
+            ).toEqual('foo.example.com');
         });
     });
 
     describe('protocol', () => {
         it('should return the protocol part of the URL', () => {
-            expect(new URLValue('http://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz').protocol).toEqual('http://');
-            expect(new URLValue('https://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz').protocol).toEqual('https://');
+            expect(
+                new URLValue(
+                    'http://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz',
+                ).protocol,
+            ).toEqual('http://');
+            expect(
+                new URLValue(
+                    'https://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz',
+                ).protocol,
+            ).toEqual('https://');
         });
     });
 
     describe('query', () => {
         it('should return an object for the query parameters', () => {
-            expect(new URLValue('http://www.example.com/wpstyle/?p=364').query).toEqual({p: '364'});
-            expect(new URLValue('https://www.example.com/foo/?bar=baz&inga=42&quux').query).toEqual({
+            expect(
+                new URLValue('http://www.example.com/wpstyle/?p=364').query,
+            ).toEqual({ p: '364' });
+            expect(
+                new URLValue(
+                    'https://www.example.com/foo/?bar=baz&inga=42&quux',
+                ).query,
+            ).toEqual({
                 bar: 'baz',
                 inga: '42',
                 quux: '',
             });
         });
         test('that keys and values are url decoded', () => {
-            expect(new URLValue('http://foo.bar/?encoded%20stuff=Test%20URL').query).toEqual({'encoded stuff': 'Test URL'});
+            expect(
+                new URLValue('http://foo.bar/?encoded%20stuff=Test%20URL')
+                    .query,
+            ).toEqual({ 'encoded stuff': 'Test URL' });
         });
         test('that it does not parse the fragment part', () => {
-            expect(new URLValue('https://example.com/foo#fragment?with=escaped%20query!').query).toEqual({});
+            expect(
+                new URLValue(
+                    'https://example.com/foo#fragment?with=escaped%20query!',
+                ).query,
+            ).toEqual({});
         });
     });
 
     describe('path', () => {
         it('should return the path part of the URL', () => {
-            expect(new URLValue('http://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz').path).toEqual('/somedir/somefile.txt');
-            expect(new URLValue('http://foo.com/blah_blah_(wikipedia)_(again)').path).toEqual('/blah_blah_(wikipedia)_(again)');
+            expect(
+                new URLValue(
+                    'http://foo.example.com/somedir/somefile.txt?foo=bar&bar=baz',
+                ).path,
+            ).toEqual('/somedir/somefile.txt');
+            expect(
+                new URLValue('http://foo.com/blah_blah_(wikipedia)_(again)')
+                    .path,
+            ).toEqual('/blah_blah_(wikipedia)_(again)');
         });
         it('should accept an empty path', () => {
             expect(new URLValue('http://foo.example.com').path).toEqual('/');
         });
         it('should not contain hash', () => {
-            expect(new URLValue('http://foo.example.com/foo#bar').path).toEqual('/foo');
+            expect(new URLValue('http://foo.example.com/foo#bar').path).toEqual(
+                '/foo',
+            );
         });
     });
 });
 
 describe('URLValueType', () => {
     it('should accept an URLValue', () => {
-        expect(URLValueType(new URLValue('http://foo.example.com'))).toBeInstanceOf(URLValue);
+        expect(
+            URLValueType(new URLValue('http://foo.example.com')),
+        ).toBeInstanceOf(URLValue);
     });
     it('should not accept another value', () => {
         expect(() => URLValueType('foo')).toThrow(TypeError);
@@ -198,7 +248,9 @@ describe('URLValueType', () => {
 
 describe('MaybeURLValueType', () => {
     it('should accept an URLValue', () => {
-        expect(MaybeURLValueType(new URLValue('http://foo.example.com'))).toBeInstanceOf(URLValue);
+        expect(
+            MaybeURLValueType(new URLValue('http://foo.example.com')),
+        ).toBeInstanceOf(URLValue);
     });
     it('should not accept another value', () => {
         expect(() => MaybeURLValueType('foo')).toThrow(TypeError);

@@ -16,15 +16,25 @@ export abstract class LinkedEntity extends VersionedContext {
      * @param {number} $contextVersion version of the $context
      * @param {Array<Link>} $links Links between entities
      */
-    constructor($context: URLValue, $contextVersion: number, $links: Array<Link> = []) {
+    constructor(
+        $context: URLValue,
+        $contextVersion: number,
+        $links: Array<Link> = [],
+    ) {
         super($context, $contextVersion);
-        this.$links = $links.map(l => LinkType(l, ['LinkedEntity()', '$links:Link[]']));
+        this.$links = $links.map(l =>
+            LinkType(l, ['LinkedEntity()', '$links:Link[]']),
+        );
     }
 
     toJSON(): LinkedEntitySchema {
         return {
             ...super.toJSON(),
-            ...{$links: this.$links.length ? this.$links.map(l => l.toJSON()) : []},
+            ...{
+                $links: this.$links.length
+                    ? this.$links.map(l => l.toJSON())
+                    : [],
+            },
         };
     }
 }

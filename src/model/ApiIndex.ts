@@ -8,7 +8,9 @@ import { ApiIndex as ApiIndexSchema } from '../../dist/schema/ApiIndex';
  * Describes entry points of an API
  */
 export class ApiIndex extends VersionedContext implements JSONSerializeable {
-    static $context = new URLValue('https://github.com/nRFCloud/models#ApiIndex');
+    static $context = new URLValue(
+        'https://github.com/nRFCloud/models#ApiIndex',
+    );
     static $contextVersion = 1;
     readonly links: Array<Link>;
 
@@ -18,19 +20,28 @@ export class ApiIndex extends VersionedContext implements JSONSerializeable {
      */
     constructor(links: Array<Link>) {
         super(ApiIndex.$context, ApiIndex.$contextVersion);
-        this.links = links.map(l => LinkType(l, ['ApiIndex()', 'links:Link[]']));
+        this.links = links.map(l =>
+            LinkType(l, ['ApiIndex()', 'links:Link[]']),
+        );
     }
 
-    static fromJSON({$context, $contextVersion, links}: ApiIndexSchema): ApiIndex {
+    static fromJSON({
+        $context,
+        $contextVersion,
+        links,
+    }: ApiIndexSchema): ApiIndex {
         VersionedContext.checkContextVersion(ApiIndex, {
-            $context: URLValue.fromString($context, ['List.fromJSON()', '$context:URLValue']),
+            $context: URLValue.fromString($context, [
+                'List.fromJSON()',
+                '$context:URLValue',
+            ]),
             $contextVersion: $contextVersion,
         });
         return new ApiIndex(links.map(l => Link.fromJSON(l)));
     }
 
     toJSON(): ApiIndexSchema {
-        const {links} = this;
-        return {...super.toJSON(), ...{links: links.map(l => l.toJSON())}};
+        const { links } = this;
+        return { ...super.toJSON(), ...{ links: links.map(l => l.toJSON()) } };
     }
 }

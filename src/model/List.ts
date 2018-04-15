@@ -5,13 +5,17 @@ import { Link } from './Link';
 import { List as ListSchema } from '../../dist/schema/List';
 
 const t = require('tcomb');
-const ZeroOrPositiveInteger = t.refinement(t.Integer, (n: number) => n >= 0, 'ZeroOrPositiveInteger');
-
+const ZeroOrPositiveInteger = t.refinement(
+    t.Integer,
+    (n: number) => n >= 0,
+    'ZeroOrPositiveInteger',
+);
 
 /**
  * Describes a list if items. Can contain links to e.g. fetch the next page in a resultset.
  */
-export class List<T extends JSONSerializeable> extends LinkedEntity implements JSONSerializeable {
+export class List<T extends JSONSerializeable> extends LinkedEntity
+    implements JSONSerializeable {
     static $context = new URLValue('https://github.com/nRFCloud/models#List');
     static $contextVersion = 1;
     readonly items: Array<T>;
@@ -29,13 +33,21 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
         super(List.$context, List.$contextVersion, $links);
         this.items = t.list(t.Any)(items, ['List()', 'items:any[]']);
         this.total = ZeroOrPositiveInteger(total, ['List()', 'total:int>=0']);
-        this.hasNext = this.$links.filter(link => link.rel === 'next').length > 0;
-        this.hasPrev = this.$links.filter(link => link.rel === 'prev').length > 0;
+        this.hasNext =
+            this.$links.filter(link => link.rel === 'next').length > 0;
+        this.hasPrev =
+            this.$links.filter(link => link.rel === 'prev').length > 0;
     }
 
-    static fromJSON({$context, $contextVersion, items, total, $links}: ListSchema, itemTransformer: Function): List<any> {
+    static fromJSON(
+        { $context, $contextVersion, items, total, $links }: ListSchema,
+        itemTransformer: Function,
+    ): List<any> {
         LinkedEntity.checkContextVersion(List, {
-            $context: URLValue.fromString($context, ['List.fromJSON()', '$context:URLValue']),
+            $context: URLValue.fromString($context, [
+                'List.fromJSON()',
+                '$context:URLValue',
+            ]),
             $contextVersion: $contextVersion,
         });
         return new List(
@@ -46,7 +58,7 @@ export class List<T extends JSONSerializeable> extends LinkedEntity implements J
     }
 
     toJSON(): ListSchema {
-        const {items, total} = this;
+        const { items, total } = this;
         const s = super.toJSON();
         return {
             ...s,

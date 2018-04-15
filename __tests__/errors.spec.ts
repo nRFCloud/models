@@ -1,10 +1,15 @@
-import { AccessDeniedError, ApplicationError, BadRequestError, EntityNotFoundError } from '../';
+import {
+    AccessDeniedError,
+    ApplicationError,
+    BadRequestError,
+    EntityNotFoundError,
+} from '../';
 
 const errs = {
-    'AccessDeniedError': AccessDeniedError,
-    'ApplicationError': ApplicationError,
-    'BadRequestError': BadRequestError,
-    'EntityNotFoundError': EntityNotFoundError,
+    AccessDeniedError: AccessDeniedError,
+    ApplicationError: ApplicationError,
+    BadRequestError: BadRequestError,
+    EntityNotFoundError: EntityNotFoundError,
 };
 
 describe('errors', () => {

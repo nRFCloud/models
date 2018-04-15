@@ -31,23 +31,39 @@ export class Status extends VersionedContext implements JSONSerializeable {
     /**
      * @throws TypeError if invalid values are passed
      */
-    constructor(maintenance: boolean, version: string, time: Date = new Date()) {
+    constructor(
+        maintenance: boolean,
+        version: string,
+        time: Date = new Date(),
+    ) {
         super(Status.$context, Status.$contextVersion);
         this.maintenance = maintenance;
         this.version = version;
         this.time = time;
     }
 
-    static fromJSON({$context, $contextVersion, maintenance, version, time}: StatusSchema): Status {
+    static fromJSON({
+        $context,
+        $contextVersion,
+        maintenance,
+        version,
+        time,
+    }: StatusSchema): Status {
         VersionedContext.checkContextVersion(Status, {
-            $context: URLValue.fromString($context, ['Status.fromJSON()', '$context:URLValue']),
+            $context: URLValue.fromString($context, [
+                'Status.fromJSON()',
+                '$context:URLValue',
+            ]),
             $contextVersion: $contextVersion,
         });
         return new Status(maintenance, version, new Date(time));
     }
 
     toJSON(): StatusSchema {
-        const {maintenance, version, time} = this;
-        return {...super.toJSON(), ...{maintenance, version, time: time.toISOString()}};
+        const { maintenance, version, time } = this;
+        return {
+            ...super.toJSON(),
+            ...{ maintenance, version, time: time.toISOString() },
+        };
     }
 }

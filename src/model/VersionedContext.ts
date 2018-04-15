@@ -2,7 +2,11 @@ import { URLValue, URLValueType } from '../value/URLValue';
 import { VersionedContext as VersionedContextSchema } from '../../dist/schema/VersionedContext';
 
 const t = require('tcomb');
-const PositiveIntegerType = t.refinement(t.Integer, (n: number) => n >= 1, 'PositiveIntegerType');
+const PositiveIntegerType = t.refinement(
+    t.Integer,
+    (n: number) => n >= 1,
+    'PositiveIntegerType',
+);
 
 export interface VersionedContextInterface {
     readonly $context: URLValue;
@@ -23,8 +27,14 @@ export abstract class VersionedContext implements VersionedContextInterface {
      * @param {number} $contextVersion version of the $context
      */
     constructor($context: URLValue, $contextVersion: number) {
-        this.$context = URLValueType($context, ['VersionedContext()', '$context:URLValue']);
-        this.$contextVersion = PositiveIntegerType($contextVersion, ['VersionedContext()', '$contextVersion:int>=1']);
+        this.$context = URLValueType($context, [
+            'VersionedContext()',
+            '$context:URLValue',
+        ]);
+        this.$contextVersion = PositiveIntegerType($contextVersion, [
+            'VersionedContext()',
+            '$contextVersion:int>=1',
+        ]);
     }
 
     toJSON(): VersionedContextSchema {
@@ -34,12 +44,21 @@ export abstract class VersionedContext implements VersionedContextInterface {
         };
     }
 
-    static checkContextVersion(expected: { $context: URLValue, $contextVersion: number }, actual: { $context: URLValue, $contextVersion: number }) {
+    static checkContextVersion(
+        expected: { $context: URLValue; $contextVersion: number },
+        actual: { $context: URLValue; $contextVersion: number },
+    ) {
         if (!expected.$context.equals(actual.$context)) {
-            throw new TypeError(`Expected "${expected.$context}" but got "${actual.$context}`);
+            throw new TypeError(
+                `Expected "${expected.$context}" but got "${actual.$context}`,
+            );
         }
         if (expected.$contextVersion !== actual.$contextVersion) {
-            throw new TypeError(`Expected "${expected.$contextVersion}" but got "${actual.$contextVersion}`);
+            throw new TypeError(
+                `Expected "${expected.$contextVersion}" but got "${
+                    actual.$contextVersion
+                }`,
+            );
         }
     }
 }
