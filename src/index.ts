@@ -7,6 +7,7 @@ export * from './model/ApiIndex';
 export * from './model/Status';
 export * from './model/HttpProblem';
 export * from './model/JSONSerializeable';
+export * from './model/checkContext';
 export * from './error/BadRequestError';
 export * from './error/AccessDeniedError';
 export * from './error/EntityNotFoundError';

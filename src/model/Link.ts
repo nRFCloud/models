@@ -2,6 +2,7 @@ import { URLValue, URLValueType } from '../value/URLValue';
 import { VersionedContext } from './VersionedContext';
 import { JSONSerializeable } from './JSONSerializeable';
 import { Link as LinkSchema } from '../../dist/schema/Link';
+import { checkContext } from './checkContext';
 
 const t = require('tcomb');
 
@@ -42,5 +43,5 @@ export class Link extends VersionedContext implements JSONSerializeable {
     }
 }
 
-export const LinkType = t.irreducible('LinkType', (x: Link) => x && x instanceof Link);
+export const LinkType = t.irreducible('LinkType', checkContext(Link));
 export const MaybeLinkType = t.maybe(LinkType);

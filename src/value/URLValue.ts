@@ -19,20 +19,20 @@ export class URLValue {
      * @throws TypeError if the provided URI fromString invalid
      */
     constructor(url: string | URLValue) {
-        if (url instanceof URLValue) {
+        if (URLValue.is(url)) {
             url = url.toString();
         }
-        if (!uriRegex.test(url)) {
+        if (!uriRegex.test(<string>url)) {
             throw new TypeError(`URLValue: Not an URI: "${url}!`);
         }
-        this.uri = url;
-        this.protocol = (url.match(/^(https?:\/\/)/) || [])[1];
-        this.hostname = (url.match(/^https?:\/\/([^\/]+)/) || [])[1];
-        this.query = /^[^#]+\?/.test(url) ? url.split('?', 2)[1].split('&').reduce((query, param) => {
+        this.uri = <string>url;
+        this.protocol = (this.uri.match(/^(https?:\/\/)/) || [])[1];
+        this.hostname = (this.uri.match(/^https?:\/\/([^\/]+)/) || [])[1];
+        this.query = /^[^#]+\?/.test(this.uri) ? this.uri.split('?', 2)[1].split('&').reduce((query, param) => {
             const [k, v] = param.split('=', 2);
             return {...query, [decodeURIComponent(k)]: v ? decodeURIComponent(v) : ''};
         }, {}) : {};
-        this.path = ((url.replace(/^https?:\/\/([^\/]+)/, '') || '/').match(/^([^\?#]+)/) || [])[1];
+        this.path = ((this.uri.replace(/^https?:\/\/([^\/]+)/, '') || '/').match(/^([^?#]+)/) || [])[1];
     }
 
     /**
@@ -65,7 +65,16 @@ export class URLValue {
     append(str: string): URLValue {
         return new URLValue(`${this}${str}`);
     }
+
+    static is(x?: any): boolean {
+        return x && x.constructor && x.constructor.name === URLValue.name
+            && 'uri' in x && typeof x.uri === 'string'
+            && 'hostname' in x && typeof x.hostname === 'string'
+            && 'protocol' in x && typeof x.protocol === 'string'
+            && 'path' in x && typeof x.path === 'string'
+            && 'query' in x && typeof x.query === 'object';
+    }
 }
 
-export const URLValueType = t.irreducible('URLValueType', (x: URLValue) => x && x instanceof URLValue);
+export const URLValueType = t.irreducible('URLValueType', URLValue.is);
 export const MaybeURLValueType = t.maybe(URLValueType);

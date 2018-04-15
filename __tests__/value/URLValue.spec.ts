@@ -27,7 +27,7 @@ const goodURIs = [
     'http://10.1.1.0',
     'http://10.1.1.1',
     'https://example.com/foo#fragment?with=escaped%20query!',
-    'https://static.wixstatic.com/media/dbd157_7aee6.png/v1/fill/w_216,h_217,al_c,usm_0.66_1.00_0.01/dbd157_7aee6.png'
+    'https://static.wixstatic.com/media/dbd157_7aee6.png/v1/fill/w_216,h_217,al_c,usm_0.66_1.00_0.01/dbd157_7aee6.png',
 ];
 
 const badURIs = [
@@ -90,11 +90,11 @@ const badURIs = [
     'http://.www.foo.bar./',
     // Unescaped fragment
     'https://example.com/foo#fragment?with=un-escaped query!',
-    'http://foo.com/blah_blah#%'
+    'http://foo.com/blah_blah#%',
 ];
 
 describe('URLValue', () => {
-    describe('constructor()', function () {
+    describe('constructor()', () => {
         it('should parse an URI', () => {
             goodURIs.forEach(uri => {
                 let u = new URLValue(uri);
@@ -159,7 +159,7 @@ describe('URLValue', () => {
             expect(new URLValue('https://www.example.com/foo/?bar=baz&inga=42&quux').query).toEqual({
                 bar: 'baz',
                 inga: '42',
-                quux: ''
+                quux: '',
             });
         });
         test('that keys and values are url decoded', () => {
