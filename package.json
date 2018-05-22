@@ -11,7 +11,6 @@
     "lint": "tslint --project ./tsconfig.json",
     "precommit": "npm run lint && npm test",
     "commitmsg": "commitlint -e",
-    "semantic-release": "semantic-release",
     "prettier": "prettier --write \"./src/*.ts\" \"./src/**/*.ts\" \"./__tests__/*.ts\" \"./__tests__/**/*.ts\""
   },
   "repository": {
@@ -43,7 +42,6 @@
     "jest": "^22.4.3",
     "json-schema-to-typescript": "^5.4.0",
     "prettier": "^1.12.0",
-    "semantic-release": "^15.1.7",
     "ts-jest": "^22.4.3",
     "tslint": "^5.9.1",
     "typescript": "^2.8.1"
