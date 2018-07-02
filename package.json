@@ -32,7 +32,6 @@
     "tcomb": "^3.2.25"
   },
   "devDependencies": {
-
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-angular": "^7.0.1",
     "@nrfcloud/tslint-config": "^3.1.0",
