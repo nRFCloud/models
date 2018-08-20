@@ -17,7 +17,8 @@ export class URLValue {
     readonly path: string;
     readonly query: { [name: string]: string };
 
-    static fromString = (str: string, path?: Array<string>): URLValue => new URLValue(URLValueString(str, path));
+    static fromString = (str: string, path?: Array<string>): URLValue =>
+        new URLValue(URLValueString(str, path));
 
     /**
      * @throws TypeError if the provided URI fromString invalid
