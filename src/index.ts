@@ -4,7 +4,6 @@ export * from './model/List';
 export * from './model/LinkedEntity';
 export * from './model/VersionedContext';
 export * from './model/ApiIndex';
-export * from './model/Status';
 export * from './model/HttpProblem';
 export * from './model/JSONSerializeable';
 export * from './model/checkContext';
@@ -19,6 +18,5 @@ export const schemas = [
     require('./model/schema/Link.json'),
     require('./model/schema/LinkedEntity.json'),
     require('./model/schema/List.json'),
-    require('./model/schema/Status.json'),
     require('./model/schema/VersionedContext.json'),
 ];
