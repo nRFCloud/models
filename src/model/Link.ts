@@ -41,7 +41,7 @@ export class Link extends VersionedContext implements JSONSerializeable {
                 'Link.fromJSON()',
                 '$context:URLValue',
             ]),
-            $contextVersion: $contextVersion,
+            $contextVersion,
         });
         return new Link(
             URLValue.fromString(href, ['Link.fromJSON()', 'href:URLValue']),

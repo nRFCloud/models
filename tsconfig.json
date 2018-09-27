@@ -4,7 +4,10 @@
         "target": "es2017",
         "strict": true,
         "outDir": "dist/",
-        "declaration": true
+        "declaration": true,
+        "skipLibCheck": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true
     },
     "include": [
         "src/**/*"

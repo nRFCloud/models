@@ -35,7 +35,7 @@ export class ApiIndex extends VersionedContext implements JSONSerializeable {
                 'List.fromJSON()',
                 '$context:URLValue',
             ]),
-            $contextVersion: $contextVersion,
+            $contextVersion,
         });
         return new ApiIndex(links.map(l => Link.fromJSON(l)));
     }

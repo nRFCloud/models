@@ -5,11 +5,11 @@ import {
     EntityNotFoundError,
 } from '../';
 
-const errs = {
-    AccessDeniedError: AccessDeniedError,
-    ApplicationError: ApplicationError,
-    BadRequestError: BadRequestError,
-    EntityNotFoundError: EntityNotFoundError,
+const errs: { [key: string]: { new (): any } } = {
+    AccessDeniedError,
+    ApplicationError,
+    BadRequestError,
+    EntityNotFoundError,
 };
 
 describe('errors', () => {

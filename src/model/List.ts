@@ -48,7 +48,7 @@ export class List<T extends JSONSerializeable> extends LinkedEntity
                 'List.fromJSON()',
                 '$context:URLValue',
             ]),
-            $contextVersion: $contextVersion,
+            $contextVersion,
         });
         return new List(
             items.map(i => itemTransformer(i)),

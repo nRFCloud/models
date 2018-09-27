@@ -88,7 +88,7 @@ export class HttpProblem extends Error
                 'HttpProblem.fromJSON()',
                 '$context:URLValue',
             ]),
-            $contextVersion: $contextVersion,
+            $contextVersion,
         });
         return new HttpProblem(new URLValue(type), title, status, detail);
     }
@@ -97,7 +97,7 @@ export class HttpProblem extends Error
         const { $context, $contextVersion, type, title, status, detail } = this;
         return {
             $context: $context.toString(),
-            $contextVersion: $contextVersion,
+            $contextVersion,
             type: type.toString(),
             title,
             status,
