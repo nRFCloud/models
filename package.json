@@ -36,7 +36,7 @@
     "@commitlint/config-angular": "^7.1.2",
     "@nrfcloud/tslint-config": "^3.7.0",
     "@types/jest": "^23.3.2",
-    "@types/node": "^10.11.1",
+    "@types/node": "^10.12.3",
     "codeclimate-test-reporter": "^0.5.0",
     "husky": "^1.0.1",
     "jest": "^23.6.0",
