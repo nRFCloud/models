@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/nRFCloud/models/issues"
   },
-  "homepage": "https://github.com/NordicSemiconductor/nrfcloud-models#readme",
+  "homepage": "https://github.com/nRFCloud/models#readme",
   "dependencies": {
     "tcomb": "^3.2.27"
   },
